@@ -8,7 +8,7 @@ import IPython.display as ipd
 import sounddevice as sd
 import soundfile as sf
 import librosa
-from revChatGPT.revChatGPT import Chatbot
+from revChatGPT.ChatGPT import Chatbot
 import urllib.request
 import json
 from IPython.display import Audio
