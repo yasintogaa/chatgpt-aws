@@ -39,7 +39,7 @@ aws_default_s3_bucket = "<S3-BUCKET>"
 samplerate = 48000
 duration = 4 #seconds
 ```
-
+ATV Haber 
 Make sure that the user that you have created in AWS have access to Amazon S3, Amazon Transcribe and Amazon Polly.
 
 I hope you enjoy it as much as I did when I was building and playing with these services. I think these state-of-the-art technologies have a lot of opportunities/potential and when we use all of them together the results are AWSome!
