@@ -14,17 +14,24 @@ import json
 from IPython.display import Audio
 from IPython.display import display
 import subprocess
+import json
 
+# Opening JSON file
+f = open('secrets.json')
+  
+# returns JSON object as 
+# a dictionary
+data = json.load(f)
 #-- Define params --
 
 # ChatGPT params
-chatGPT_session_token = "<SESSION-TOKEN>"
+chatGPT_session_token = data['chatGPT_session_token']
 
 # AWS params
-aws_access_key_id = "<ACCESS-KEY-ID>"
-aws_secret_access_key = "<SECRET-ACCESS-KEY>"
-aws_default_region = "<AWS-REGION>"
-aws_default_s3_bucket = "<S3-BUCKET>"
+aws_access_key_id = data['aws_access_key_id']
+aws_secret_access_key = data['aws_access_key_id']
+aws_default_region = data['aws_access_key_id']
+aws_default_s3_bucket = data['aws_access_key_id']
 
 # Voice recording params
 samplerate = 48000
