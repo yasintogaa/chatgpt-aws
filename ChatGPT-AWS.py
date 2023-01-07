@@ -8,7 +8,7 @@ import IPython.display as ipd
 import sounddevice as sd
 import soundfile as sf
 import librosa
-from revChatGPT.ChatGPT import Chatbot
+from revChatGPT.revChatGPT import Chatbot
 import urllib.request
 import json
 from IPython.display import Audio
@@ -29,9 +29,10 @@ chatGPT_session_token = data['chatGPT_session_token']
 
 # AWS params
 aws_access_key_id = data['aws_access_key_id']
-aws_secret_access_key = data['aws_access_key_id']
-aws_default_region = data['aws_access_key_id']
-aws_default_s3_bucket = data['aws_access_key_id']
+aws_secret_access_key = data['aws_secret_access_key']
+aws_default_region = data['aws_default_region']
+aws_default_s3_bucket = data['aws_default_s3_bucket']
+print(aws_default_s3_bucket)
 
 # Voice recording params
 samplerate = 48000
