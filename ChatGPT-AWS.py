@@ -15,6 +15,7 @@ from IPython.display import Audio
 from IPython.display import display
 import subprocess
 import json
+import requests
 
 # Opening JSON file
 f = open('secrets.json')
@@ -32,7 +33,6 @@ aws_access_key_id = data['aws_access_key_id']
 aws_secret_access_key = data['aws_secret_access_key']
 aws_default_region = data['aws_default_region']
 aws_default_s3_bucket = data['aws_default_s3_bucket']
-print(aws_default_s3_bucket)
 
 # Voice recording params
 samplerate = 48000
@@ -112,15 +112,32 @@ transcript, language_detected = get_text_from_audi(filename)
 #-- Send Text to ChatGPT and get the answer --
 def get_gpt_answer(prompt):
     print(f"[INFO] Sending transcript to ChatGPT")
-    config = {"email": "<API-KEY>","session_token": chatGPT_session_token}
-    chatbot = Chatbot(config, conversation_id=None)
-    chatbot.refresh_session()
-    response = chatbot.get_chat_response(prompt, output="text")["message"]
+    #config = {"email": "designdiffuse0@gmail.com","session_token": chatGPT_session_token}
+    #chatbot = Chatbot({"session_token": chatGPT_session_token}, conversation_id=None, parent_id=None) # You can start a custom conversation
+
+    #chatbot.refresh_session()
+    #response = chatbot.get_chat_response(prompt, output="text")["message"]
+    headers = {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer ' + chatGPT_session_token,
+}
+
+    json_data = {
+        'model': 'text-davinci-003',
+        'prompt': prompt,
+        'temperature': 0,
+        'max_tokens': 20,
+    }
+
+    response = requests.post('https://api.openai.com/v1/completions', headers=headers, json=json_data)
+    response = response.json()
+    response = response['choices'][0]['text']
+    #print(response)
     print(f"[INFO] ChatGPT answer: {response}")
     return(response)
 
 chatgpt_answer = get_gpt_answer(transcript)
-
+#print(chatgpt_answer)
 #-- Convert Text to Audio using Amazon Polly --
 
 def get_polly_client():
