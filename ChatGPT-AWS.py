@@ -112,7 +112,7 @@ transcript, language_detected = get_text_from_audi(filename)
 #-- Send Text to ChatGPT and get the answer --
 def get_gpt_answer(prompt):
     print(f"[INFO] Sending transcript to ChatGPT")
-    #config = {"email": "designdiffuse0@gmail.com","session_token": chatGPT_session_token}
+    #config = {"email": "[EMAIL]]","session_token": chatGPT_session_token}
     #chatbot = Chatbot({"session_token": chatGPT_session_token}, conversation_id=None, parent_id=None) # You can start a custom conversation
 
     #chatbot.refresh_session()
